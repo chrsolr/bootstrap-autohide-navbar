@@ -39,12 +39,12 @@
     }, settings.speed);
 
     function onHasScrolled() {
-      const top = $(window).scrollTop();
+      var top = $(window).scrollTop();
 
       if (Math.abs(last_position - top) <= settings.delta) return;
 
       if (top > last_position && top > $nav.outerHeight()) {
-        $nav.animate({ top: `-${Number($nav.outerHeight() + 10)}px` }, settings.speed);
+        $nav.animate({ top: -Number($nav.outerHeight() + 10) + "px" }, settings.speed);
       } else {
         if (top + $(window).height() < $(document).height()) {
           $nav.animate({ top: "0px" }, settings.speed);
