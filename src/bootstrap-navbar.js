@@ -1,7 +1,19 @@
 ; (function ($, window, document, undefined) {
   "use strict";
+  
+  var plugin_name = 'BootstrapNavbar';
+  var plugin_version = '0.0.1';
+  var defaults = {
+    delta: 5,
+    speed: 250
+  };
+  
+  function BootstrapNavbar(element, options) {
+    this.element = element;
+    this.options = $.extend({}, defaults, options);
+  }
 
-  $.fn.BootstrapNavbar = function (options) {
+  $.fn.[plugin_name] = function (options) {
     var $nav = this;
     var last_position = 0;
     var is_scrolled = false;
