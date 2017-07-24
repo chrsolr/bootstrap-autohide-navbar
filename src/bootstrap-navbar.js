@@ -1,4 +1,4 @@
-; (function ($) {
+; (function ($, window, document, undefined) {
   "use strict";
 
   $.fn.BootstrapNavbar = function (options) {
@@ -43,4 +43,4 @@
 
     return $nav;
   };
-})(jQuery);
+})(jQuery, window, document);
