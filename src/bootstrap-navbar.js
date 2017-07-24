@@ -4,25 +4,26 @@
   var plugin_name = 'BootstrapNavbar';
   var plugin_version = '0.0.1';
   var defaults = {
-    delta: 5,
-    speed: 250
+    shadow: false
   };
   
   function BootstrapNavbar(element, options) {
     this.element = element;
-    this.options = $.extend({}, defaults, options);
+    this.settings = $.extend({}, defaults, options);
+    
+    //TODO: Add bottom shadow if needed
   }
-
-  $.fn.[plugin_name] = function (options) {
-    var $nav = this;
+  
+  BootstrapNavbar.prototype.ShowOrHideOnScroll = function (options) {
+    var $nav = this.element;
     var last_position = 0;
     var is_scrolled = false;
-
+    
     var settings = $.extend({
       delta: 5,
       speed: 250
     }, options);
-
+    
     if (!$nav.hasClass("navbar-fixed-top"))
       $nav.addClass("navbar-fixed-top");
 
@@ -54,5 +55,9 @@
     }
 
     return $nav;
+  }
+
+  $.fn.[plugin_name] = function (options) {
+    return new BootstrapNavbar(this, options);
   };
 })(jQuery, window, document);
