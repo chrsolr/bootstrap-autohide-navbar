@@ -11,7 +11,8 @@
     this.element = element;
     this.settings = $.extend({}, defaults, options);
     
-    //TODO: Add bottom shadow if needed
+    if (settings.shadow)
+      this.element.css({ "box-shadow": "0 0 4px rgba(0,0,0,0.4)" });
   }
   
   BootstrapNavbar.prototype.ShowOrHideOnScroll = function (options) {
