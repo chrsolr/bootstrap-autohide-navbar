@@ -1,8 +1,8 @@
 {
-  "name": "navstrap",
-  "version": "0.0.2",
+  "name": "bootstrap-autohide-navbar",
+  "version": "0.0.1",
   "description": "A small jquery plugin to show/hide twitter bootstrap 3 navbar on scroll.",
-  "main": "dist/navstrap.min.js",
+  "main": "dist/bootstrap-autohide-navbar.js",
   "keywords": [
     "jquery plugin",
     "bootstrap navbar",
@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iamrelos/navstrap.git"
+    "url": "git+https://github.com/iamrelos/bootstrap-autohide-navbar.git"
   },
   "author": "Christian Soler",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/iamrelos/navstrap/issues"
+    "url": "https://github.com/iamrelos/bootstrap-autohide-navbar/issues"
   },
-  "homepage": "https://github.com/iamrelos/navstrap#readme",
+  "homepage": "https://github.com/iamrelos/bootstrap-autohide-navbar#readme",
   "dependencies": {
   },
   "devDependencies": {

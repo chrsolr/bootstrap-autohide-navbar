@@ -1,33 +1,36 @@
 /*!
- * navstrap v0.0.2 (https://github.com/iamrelos/navstrap.git)
+ * navstrap v0.0.1 (https://github.com/iamrelos/bootstrap-autohide-navbar.git)
  *
  * Copyright 2017 navstrap
- * Licensed under MIT (https://github.com/iamrelos/navstrap/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/iamrelos/bootstrap-autohide-navbar/blob/master/LICENSE)
  */
 
 ; (function ($, window, document, undefined) {
   "use strict";
 
-  var plugin_name = 'NavStrap';
-  var plugin_version = '0.0.2';
+  var plugin_name = 'BootstrapAutoHideNavbar';
+  var plugin_version = '0.0.1';
 
-  function NavStrap(element) {
+  function BootstrapAutoHideNavbar(element, options) {
     this.element = element;
     this.version = plugin_version;
-  }
 
-  NavStrap.prototype.ShowOrHideOnScroll = function (options) {
-    var $nav = this.element;
-    var $window = $(window);
-    var $document = $(document);
-    var last_position = 0;
-    var is_scrolled = false;
-
-    var settings = $.extend({
+    this.settings = $.extend({
       delta: 5,
       speed: 250,
       shadow: false
     }, options);
+
+    init(this);
+  }
+
+  function init(context) {
+    var settings = context.settings;
+    var $nav = context.element;
+    var $window = $(window);
+    var $document = $(document);
+    var last_position = 0;
+    var is_scrolled = false;
 
     if (!$nav.hasClass("navbar-fixed-top"))
       $nav.addClass("navbar-fixed-top");
@@ -66,7 +69,7 @@
     return $nav;
   }
 
-  $.fn[plugin_name] = function () {
-    return new NavStrap(this);
+  $.fn[plugin_name] = function (options) {
+    return new BootstrapAutoHideNavbar(this, options);
   };
 })(jQuery, window, document);

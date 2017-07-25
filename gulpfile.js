@@ -12,7 +12,7 @@ gulp.task('build', () => {
         mangle: true
     };
 
-    return gulp.src('./src/navstrap.js')
+    return gulp.src('./src/bootstrap-autohide-navbar.js')
         .pipe(glp.minify(minify_opts))
         .pipe(gulp.dest(`./dist/`));
 });
