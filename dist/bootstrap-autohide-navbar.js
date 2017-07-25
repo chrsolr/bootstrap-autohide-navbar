@@ -14,13 +14,23 @@
 	var plugin_version = '0.0.2';
 	var $window = $(window);
 	var $document = $(document);
-	var visible = true;
 	var defaults = {
-		disable: false,
 		delta: 5,
 		duration: 250,
 		shadow: false
 	};
+
+	function show() {
+		this.element.css({
+			transform: 'translate3d(0, 0, 0)'
+		});
+	}
+
+	function hide() {
+		this.element.css({
+			transform: 'translate3d(0, -110%, 0)'
+		});
+	}
 
 	function BootstrapAutoHideNavbar(element, options) {
 		this.element = $(element);
@@ -42,22 +52,6 @@
 		});
 
 		this.init();
-	}
-
-	function show() {
-		this.element.css({
-			transform: 'translate3d(0, 0, 0)'
-		});
-
-		visible = true;
-	}
-
-	function hide() {
-		this.element.css({
-			transform: 'translate3d(0, -110%, 0)'
-		});
-
-		visible = false;
 	}
 
 	BootstrapAutoHideNavbar.prototype.init = function () {
@@ -97,22 +91,12 @@
 		return $nav;
 	};
 
-	/**
-	 * @desc Show navbar
-	 */
 	BootstrapAutoHideNavbar.prototype.show = function () {
 		show.call(this);
 	};
 
-	/**
-	 * @desc Hide navbar
-	 */
 	BootstrapAutoHideNavbar.prototype.hide = function () {
 		hide.call(this);
-	};
-
-	BootstrapAutoHideNavbar.prototype.setDisableAutoHide = function (disable) {
-		this.settings.disable = disable;
 	};
 
 	$.fn[plugin_name] = function (options) {
