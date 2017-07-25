@@ -1,4 +1,4 @@
-# NavStrap
+# navstrap
 A small jQuery plugin to show/hide twitter bootstrap 3 navbar on scroll.
 
 ## Install
