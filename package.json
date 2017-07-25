@@ -1,5 +1,5 @@
 {
-  "name": "NavStrap",
+  "name": "navstrap",
   "version": "0.0.1",
   "description": "A small jquery plugin to show/hide twitter bootstrap 3 navbar on scroll.",
   "main": "dist/navstrap.min.js",
