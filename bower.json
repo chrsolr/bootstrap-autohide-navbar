@@ -2,7 +2,7 @@
   "name": "bootstrap-navbar",
   "description": "A small jquery plugin to show/hide twitter bootstrap 3 navbar on scroll.",
   "main": "dist/bootstrap-navbar.min.js",
-    "keywords": [
+  "keywords": [
     "jquery plugin",
     "bootstrap navbar",
     "bootstrap",
@@ -22,6 +22,7 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.2.1"
   }
 }
