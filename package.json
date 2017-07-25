@@ -3,6 +3,12 @@
   "version": "0.0.1",
   "description": "A small jquery plugin to show/hide twitter bootstrap 3 navbar on scroll.",
   "main": "dist/bootstrap-navbar.min.js",
+  "keywords": [
+    "jquery plugin",
+    "bootstrap navbar",
+    "bootstrap",
+    "jquery"
+  ],
   "directories": {
     "example": "examples"
   },
@@ -20,9 +26,7 @@
   },
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.0",
     "gulp-load-plugins": "^1.2.4",
-    "gulp-minify": "0.0.14",
-    "gulp-rename": "^1.2.2"
+    "gulp-minify": "0.0.14"
   }
 }
