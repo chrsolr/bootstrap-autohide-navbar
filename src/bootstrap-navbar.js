@@ -11,7 +11,7 @@
     this.element = element;
     this.settings = $.extend({}, defaults, options);
     
-    if (settings.shadow)
+    if (this.settings.shadow)
       this.element.css({ "box-shadow": "0 0 4px rgba(0,0,0,0.4)" });
   }
   
@@ -58,7 +58,7 @@
     return $nav;
   }
 
-  $.fn.[plugin_name] = function (options) {
+  $.fn[plugin_name] = function (options) {
     return new BootstrapNavbar(this, options);
   };
 })(jQuery, window, document);
