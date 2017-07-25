@@ -9,6 +9,7 @@
   
   function BootstrapNavbar(element, options) {
     this.element = element;
+    this.version = plugin_version;
     this.settings = $.extend({}, defaults, options);
     
     if (this.settings.shadow)
