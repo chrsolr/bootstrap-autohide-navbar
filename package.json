@@ -1,0 +1,28 @@
+{
+  "name": "bootstrap-navbar",
+  "version": "0.0.1",
+  "description": "A small jquery plugin to show/hide twitter bootstrap 3 navbar on scroll.",
+  "main": "dist/bootstrap-navbar.min.js",
+  "directories": {
+    "example": "examples"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamrelos/bootstrap-navbar.git"
+  },
+  "author": "Christian Soler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iamrelos/bootstrap-navbar/issues"
+  },
+  "homepage": "https://github.com/iamrelos/bootstrap-navbar#readme",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-load-plugins": "^1.2.4",
+    "gulp-minify": "0.0.14",
+    "gulp-rename": "^1.2.2"
+  }
+}
