@@ -1,19 +1,19 @@
+/*!
+ * navstrap v0.0.2 (https://github.com/iamrelos/navstrap.git)
+ *
+ * Copyright 2017 navstrap
+ * Licensed under MIT (https://github.com/iamrelos/navstrap/blob/master/LICENSE)
+ */
+
 ; (function ($, window, document, undefined) {
   "use strict";
 
   var plugin_name = 'NavStrap';
-  var plugin_version = '0.0.1';
-  var defaults = {
-    shadow: false
-  };
+  var plugin_version = '0.0.2';
 
-  function NavStrap(element, options) {
+  function NavStrap(element) {
     this.element = element;
     this.version = plugin_version;
-    this.settings = $.extend({}, defaults, options);
-
-    if (this.settings.shadow)
-      this.element.css({ "box-shadow": "0 0 4px rgba(0,0,0,0.4)" });
   }
 
   NavStrap.prototype.ShowOrHideOnScroll = function (options) {
@@ -25,11 +25,17 @@
 
     var settings = $.extend({
       delta: 5,
-      speed: 250
+      speed: 250,
+      shadow: false
     }, options);
 
     if (!$nav.hasClass("navbar-fixed-top"))
       $nav.addClass("navbar-fixed-top");
+
+    if (settings.shadow)
+      $nav.css({ "box-shadow": "0 0 4px rgba(0,0,0,0.4)" });
+
+    $nav.css({ transition: "transform ease-in-out " + settings.speed + "ms" });
 
     $window.scroll(function () {
       is_scrolled = true;
@@ -48,11 +54,10 @@
       if (Math.abs(last_position - top) <= settings.delta) return;
 
       if (top > last_position && top > $nav.outerHeight()) {
-        $nav.animate({ top: -Number($nav.outerHeight() + 10) + "px" }, settings.speed);
+        $nav.css({ transform: "translate3d(0, -110%, 0)" });
       } else {
-        if (top + $window.height() < $document.height()) {
-          $nav.animate({ top: "0px" }, settings.speed);
-        }
+        if (top + $window.height() < $document.height()) 
+          $nav.css({ transform: "translate3d(0, 0, 0)" });
       }
 
       last_position = top;
@@ -61,7 +66,7 @@
     return $nav;
   }
 
-  $.fn[plugin_name] = function (options) {
-    return new NavStrap(this, options);
+  $.fn[plugin_name] = function () {
+    return new NavStrap(this);
   };
 })(jQuery, window, document);

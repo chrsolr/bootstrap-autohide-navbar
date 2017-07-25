@@ -19,7 +19,8 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    ".vscode"
   ],
   "dependencies": {
     "bootstrap": "^3.3.7",
