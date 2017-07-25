@@ -1,13 +1,13 @@
 ; (function ($, window, document, undefined) {
   "use strict";
 
-  var plugin_name = 'BootstrapNavbar';
+  var plugin_name = 'NavStrap';
   var plugin_version = '0.0.1';
   var defaults = {
     shadow: false
   };
 
-  function BootstrapNavbar(element, options) {
+  function NavStrap(element, options) {
     this.element = element;
     this.version = plugin_version;
     this.settings = $.extend({}, defaults, options);
@@ -16,7 +16,7 @@
       this.element.css({ "box-shadow": "0 0 4px rgba(0,0,0,0.4)" });
   }
 
-  BootstrapNavbar.prototype.ShowOrHideOnScroll = function (options) {
+  NavStrap.prototype.ShowOrHideOnScroll = function (options) {
     var $nav = this.element;
     var $window = $(window);
     var $document = $(document);
@@ -62,6 +62,6 @@
   }
 
   $.fn[plugin_name] = function (options) {
-    return new BootstrapNavbar(this, options);
+    return new NavStrap(this, options);
   };
 })(jQuery, window, document);

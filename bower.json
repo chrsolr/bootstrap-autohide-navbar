@@ -1,7 +1,7 @@
 {
-  "name": "bootstrap-navbar",
+  "name": "NavStrap",
   "description": "A small jquery plugin to show/hide twitter bootstrap 3 navbar on scroll.",
-  "main": "dist/bootstrap-navbar.min.js",
+  "main": "dist/navstrap.min.js",
   "keywords": [
     "jquery plugin",
     "bootstrap navbar",
@@ -12,7 +12,7 @@
     "Christian Soler"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/iamrelos/bootstrap-navbar",
+  "homepage": "https://github.com/iamrelos/navstrap",
   "moduleType": [],
   "ignore": [
     "**/.*",
