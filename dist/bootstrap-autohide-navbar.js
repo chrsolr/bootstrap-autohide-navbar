@@ -1,75 +1,131 @@
-/*!
- * navstrap v0.0.1 (https://github.com/iamrelos/bootstrap-autohide-navbar.git)
- *
- * Copyright 2017 navstrap
- * Licensed under MIT (https://github.com/iamrelos/bootstrap-autohide-navbar/blob/master/LICENSE)
+/**
+ * bootstrap-autohide-navbar
+ * @desc A small jquery plugin to show/hide twitter bootstrap 3 navbar on scroll.
+ * @version 0.0.2
+ * @link https://github.com/iamrelos/bootstrap-autohide-navbar#readme
+ * @license MIT
+ * @author Christian Soler
  */
+;
+(function ($, window, document, undefined) {
+	'use strict';
 
-; (function ($, window, document, undefined) {
-  "use strict";
+	var plugin_name = 'BootstrapAutoHideNavbar';
+	var plugin_version = '0.0.2';
+	var $window = $(window);
+	var $document = $(document);
+	var visible = true;
+	var defaults = {
+		disable: false,
+		delta: 5,
+		duration: 250,
+		shadow: false
+	};
 
-  var plugin_name = 'BootstrapAutoHideNavbar';
-  var plugin_version = '0.0.1';
+	function BootstrapAutoHideNavbar(element, options) {
+		this.element = $(element);
+		this.settings = $.extend({}, defaults, options);
+		this._defaults = defaults;
+		this._name = plugin_name;
+		this._version = plugin_version;
 
-  function BootstrapAutoHideNavbar(element, options) {
-    this.element = element;
-    this.version = plugin_version;
+		if (!this.element.hasClass('navbar-fixed-top'))
+			this.element.addClass('navbar-fixed-top');
 
-    this.settings = $.extend({
-      delta: 5,
-      speed: 250,
-      shadow: false
-    }, options);
+		if (this.settings.shadow)
+			this.element.css({
+				'box-shadow': '0 0 4px rgba(0,0,0,0.4)'
+			});
 
-    init(this);
-  }
+		this.element.css({
+			transition: 'transform ease-in-out ' + this.settings.duration + 'ms'
+		});
 
-  function init(context) {
-    var settings = context.settings;
-    var $nav = context.element;
-    var $window = $(window);
-    var $document = $(document);
-    var last_position = 0;
-    var is_scrolled = false;
+		this.init();
+	}
 
-    if (!$nav.hasClass("navbar-fixed-top"))
-      $nav.addClass("navbar-fixed-top");
+	function show() {
+		this.element.css({
+			transform: 'translate3d(0, 0, 0)'
+		});
 
-    if (settings.shadow)
-      $nav.css({ "box-shadow": "0 0 4px rgba(0,0,0,0.4)" });
+		visible = true;
+	}
 
-    $nav.css({ transition: "transform ease-in-out " + settings.speed + "ms" });
+	function hide() {
+		this.element.css({
+			transform: 'translate3d(0, -110%, 0)'
+		});
 
-    $window.scroll(function () {
-      is_scrolled = true;
-    });
+		visible = false;
+	}
 
-    setInterval(function () {
-      if (is_scrolled) {
-        onHasScrolled();
-        is_scrolled = false;
-      }
-    }, settings.speed);
+	BootstrapAutoHideNavbar.prototype.init = function () {
+		var _this = this;
+		var $nav = _this.element;
+		var settings = _this.settings;
+		var last_position = 0;
+		var is_scrolled = false;
 
-    function onHasScrolled() {
-      var top = $window.scrollTop();
+		$window.scroll(function () {
+			is_scrolled = true;
+		});
 
-      if (Math.abs(last_position - top) <= settings.delta) return;
+		setInterval(function () {
+			if (is_scrolled) {
+				onHasScrolled();
+				is_scrolled = false;
+			}
+		}, settings.duration);
 
-      if (top > last_position && top > $nav.outerHeight()) {
-        $nav.css({ transform: "translate3d(0, -110%, 0)" });
-      } else {
-        if (top + $window.height() < $document.height()) 
-          $nav.css({ transform: "translate3d(0, 0, 0)" });
-      }
+		function onHasScrolled() {
+			var top = $window.scrollTop();
 
-      last_position = top;
-    }
+			if (Math.abs(last_position - top) <= settings.delta)
+				return;
 
-    return $nav;
-  }
+			if (top > last_position && top > $nav.outerHeight()) {
+				_this.hide();
+			} else {
+				if (top + $window.height() < $document.height())
+					_this.show();
+			}
 
-  $.fn[plugin_name] = function (options) {
-    return new BootstrapAutoHideNavbar(this, options);
-  };
+			last_position = top;
+		}
+
+		return $nav;
+	};
+
+	/**
+	 * @desc Show navbar
+	 */
+	BootstrapAutoHideNavbar.prototype.show = function () {
+		show.call(this);
+	};
+
+	/**
+	 * @desc Hide navbar
+	 */
+	BootstrapAutoHideNavbar.prototype.hide = function () {
+		hide.call(this);
+	};
+
+	BootstrapAutoHideNavbar.prototype.setDisableAutoHide = function (disable) {
+		this.settings.disable = disable;
+	};
+
+	$.fn[plugin_name] = function (options) {
+		var instance;
+
+		this.each(function () {
+			instance = $.data(this, 'plugin_' + plugin_name);
+
+			if (instance === undefined) {
+				instance = $.data(this, 'plugin_' + plugin_name, new BootstrapAutoHideNavbar(this, options));
+			}
+		});
+
+		return instance;
+	};
 })(jQuery, window, document);

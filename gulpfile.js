@@ -4,6 +4,19 @@ const glp = require('gulp-load-plugins')({
 });
 
 gulp.task('build', () => {
+    const pkg = require('./package.json');
+    const banner = [
+        '/**',
+        ' * <%= pkg.name %>',
+        ' * @desc <%= pkg.description %>',
+        ' * @version <%= pkg.version %>',
+        ' * @link <%= pkg.homepage %>',
+        ' * @license <%= pkg.license %>',
+        ' * @author <%= pkg.author %>',
+        ' */',
+        ''
+    ].join('\n');
+
     const minify_opts = {
         ext: {
             min: '.min.js'
@@ -13,8 +26,9 @@ gulp.task('build', () => {
     };
 
     return gulp.src('./src/bootstrap-autohide-navbar.js')
+        .pipe(glp.header(banner, { pkg: pkg }))
         .pipe(glp.minify(minify_opts))
-        .pipe(gulp.dest(`./dist/`));
+        .pipe(gulp.dest('./dist/'));
 });
 
 gulp.task('default', ['build']);

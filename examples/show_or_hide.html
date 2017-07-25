@@ -70,11 +70,16 @@
     $(function () {
       'use strict';
 
-      $('.navbar').BootstrapAutoHideNavbar({
+      var autoHideNavbar = $('.navbar').BootstrapAutoHideNavbar({
+        disable: false,
         delta: 5,
-        speed: 250,
+        duration: 250,
         shadow: true
       });
+
+      autoHideNavbar.setDisableAutoHide(true);
+
+      console.log(autoHideNavbar);
     });
   </script>
 </body>
