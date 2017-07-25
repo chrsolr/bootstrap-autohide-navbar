@@ -3,7 +3,7 @@ A small jQuery plugin to show/hide twitter bootstrap 3 navbar on scroll.
 
 ## Install
 ```
-$ bower install navstrap
+$ bower install bootstrap-autohide-navbar
 ```
 
 ## Usage
