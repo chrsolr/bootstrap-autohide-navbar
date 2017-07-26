@@ -22,5 +22,8 @@
     "tests",
     ".vscode"
   ],
-  "dependencies": {}
+  "dependencies": {
+    "jquery": ">=1.9.1",
+    "bootstrap": "~3.0"
+  }
 }
