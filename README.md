@@ -37,3 +37,10 @@ $(function () {
 | delta | No | 5 | How many pixels the user needs to scroll down before effect get trigger |
 | duration | No | 250 | Duration of animation in milliseconds |
 | shadow | No | false | Add bottom shadow to navbar |
+| disableAutoHide | No | false | Disable auto hide effect on scroll |
+
+## Methods
+| Name | Parameter | Description |
+| ------------- | ------------- | ------------- |
+| show | None | Show navbar |
+| hide | None | Hide navbar |

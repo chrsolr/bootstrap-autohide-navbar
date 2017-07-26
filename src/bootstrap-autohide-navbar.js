@@ -3,10 +3,11 @@
 	'use strict';
 
 	var plugin_name = 'BootstrapAutoHideNavbar';
-	var plugin_version = '0.0.2';
+	var plugin_version = '0.0.3';
 	var $window = $(window);
 	var $document = $(document);
 	var defaults = {
+		disableAutoHide: false,
 		delta: 5,
 		duration: 250,
 		shadow: false
@@ -52,18 +53,17 @@
 		var settings = _this.settings;
 		var last_position = 0;
 		var is_scrolled = false;
-		var timer = null;
 
 		$window.scroll(function () {
 			is_scrolled = true;
 		});
 
 		setInterval(function () {
-			if (is_scrolled) {
+			if (is_scrolled && !settings.disableAutoHide) {
 				onHasScrolled();
 				is_scrolled = false;
 			}
-		}, settings.duration);
+		}, 250);
 
 		function onHasScrolled() {
 			var top = $window.scrollTop();
