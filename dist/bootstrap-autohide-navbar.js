@@ -60,7 +60,6 @@
 		var settings = _this.settings;
 		var last_position = 0;
 		var is_scrolled = false;
-		var timer = null;
 
 		$window.scroll(function () {
 			is_scrolled = true;
