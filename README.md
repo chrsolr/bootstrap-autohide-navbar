@@ -36,4 +36,4 @@ $(function () {
 | ------------- | ------------- | ------------- | ------------- |
 | delta | No | 5 | How many pixels the user needs to scroll down before effect get trigger |
 | duration | No | 250 | Duration of animation in milliseconds |
-| shadow | no | false | Add bottom shadow to navbar |
+| shadow | No | false | Add bottom shadow to navbar |
