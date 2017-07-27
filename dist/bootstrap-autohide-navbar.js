@@ -100,6 +100,10 @@
 		hide.call(this);
 	};
 
+	BootstrapAutoHideNavbar.prototype.setDisableAutoHide = function (flag) {
+		this.settings.disableAutoHide = flag;
+	};
+
 	$.fn[plugin_name] = function (options) {
 		var instance;
 

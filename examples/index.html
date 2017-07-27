@@ -48,6 +48,7 @@
       </div>
       <div class="collapse navbar-collapse" id="navbar-top">
         <ul class="nav navbar-nav navbar-right">
+          <li><a id="disable-auto-hide" href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Disable</a></li>
           <li><a href="http://keypunchers.io/" data-toggle="collapse" data-target=".navbar-collapse.in">KeyPunchers.io</a></li>
           <li><a href="https://github.com/iamrelos" data-toggle="collapse" data-target=".navbar-collapse.in">Github</a></li>
         </ul>
@@ -79,11 +80,24 @@
     $(function () {
       'use strict';
 
-      $('.navbar').BootstrapAutoHideNavbar({
+      var autohide = $('.navbar').BootstrapAutoHideNavbar({
         disableAutoHide: false,
         delta: 5,
         duration: 250,
         shadow: true
+      });
+
+      $('#disable-auto-hide').on('click', function (e) {
+        e.preventDefault();
+
+        var isDisable = autohide.settings.disableAutoHide;
+
+        autohide.setDisableAutoHide(!isDisable);
+
+        if (isDisable)
+          $(this).text('Disable');
+        else
+          $(this).text('Enable');
       });
     });
   </script>

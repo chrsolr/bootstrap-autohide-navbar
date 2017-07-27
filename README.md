@@ -24,6 +24,7 @@ $(function () {
   'use strict';
 
   $('.navbar').BootstrapAutoHideNavbar({
+    disableAutoHide: false,
     delta: 5,
     duration: 250,
     shadow: true
@@ -44,3 +45,4 @@ $(function () {
 | ------------- | ------------- | ------------- |
 | show | None | Show navbar |
 | hide | None | Hide navbar |
+| setDisableAutoHide | boolean | Disable/Enable auto hide effect |
