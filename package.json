@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-autohide-navbar",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A small jquery plugin to show/hide twitter bootstrap 3 navbar on scroll.",
   "main": "dist/bootstrap-autohide-navbar.js",
   "keywords": [
