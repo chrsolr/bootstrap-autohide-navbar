@@ -7,7 +7,7 @@
  * @author Christian Soler
  */
 ;
-(function ($, window, document) {
+(function ($, window, document, undefined) {
     'use strict';
     var plugin_name = 'BootstrapAutoHideNavbar';
     var $window = $(window);

@@ -1,6 +1,6 @@
 declare const jQuery: any;
 
-; (($: any, window: any, document: any) => {
+; (($: any, window: any, document: any, undefined?: any) => {
 	'use strict';
 
 	const plugin_name = 'BootstrapAutoHideNavbar';
