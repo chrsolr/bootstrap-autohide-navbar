@@ -25,7 +25,10 @@ gulp.task('build', () => {
         mangle: true
     };
 
-    return gulp.src('./src/bootstrap-autohide-navbar.js')
+    return gulp.src('./src/**/*.ts')
+        .pipe(glp.typescript({
+            noImplicitAny: true
+        }))
         .pipe(glp.header(banner, { pkg: pkg }))
         .pipe(glp.minify(minify_opts))
         .pipe(gulp.dest('./dist/'));

@@ -3,7 +3,6 @@
 	'use strict';
 
 	var plugin_name = 'BootstrapAutoHideNavbar';
-	var plugin_version = '0.0.3';
 	var $window = $(window);
 	var $document = $(document);
 	var defaults = {
@@ -30,7 +29,6 @@
 		this.settings = $.extend({}, defaults, options);
 		this._defaults = defaults;
 		this._name = plugin_name;
-		this._version = plugin_version;
 
 		if (!this.element.hasClass('navbar-fixed-top'))
 			this.element.addClass('navbar-fixed-top');
