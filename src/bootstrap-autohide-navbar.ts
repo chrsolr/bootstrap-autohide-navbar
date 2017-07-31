@@ -1,11 +1,12 @@
-;
-(function ($, window, document, undefined) {
+declare const jQuery: any;
+
+; (($: any, window: any, document: any) => {
 	'use strict';
 
-	var plugin_name = 'BootstrapAutoHideNavbar';
-	var $window = $(window);
-	var $document = $(document);
-	var defaults = {
+	const plugin_name = 'BootstrapAutoHideNavbar';
+	const $window = $(window);
+	const $document = $(document);
+	const defaults = {
 		disableAutoHide: false,
 		delta: 5,
 		duration: 250,
@@ -24,85 +25,88 @@
 		});
 	}
 
-	function BootstrapAutoHideNavbar(element, options) {
-		this.element = $(element);
-		this.settings = $.extend({}, defaults, options);
-		this._defaults = defaults;
-		this._name = plugin_name;
+	class BootstrapAutoHideNavbar {
+		element: any;
+		settings: any;
+		_defaults: any;
 
-		if (!this.element.hasClass('navbar-fixed-top'))
-			this.element.addClass('navbar-fixed-top');
+		constructor(element: Element, options: any) {
+			this.element = $(element);
+			this.settings = $.extend({}, defaults, options);
 
-		if (this.settings.shadow)
+			if (!this.element.hasClass('navbar-fixed-top'))
+				this.element.addClass('navbar-fixed-top');
+
+			if (this.settings.shadow)
+				this.element.css({
+					'box-shadow': '0 0 4px rgba(0,0,0,0.4)'
+				});
+
 			this.element.css({
-				'box-shadow': '0 0 4px rgba(0,0,0,0.4)'
+				transition: 'transform ease-in-out ' + this.settings.duration + 'ms'
 			});
 
-		this.element.css({
-			transition: 'transform ease-in-out ' + this.settings.duration + 'ms'
-		});
-
-		this.init();
-	}
-
-	BootstrapAutoHideNavbar.prototype.init = function () {
-		var _this = this;
-		var $nav = _this.element;
-		var settings = _this.settings;
-		var last_position = 0;
-		var is_scrolled = false;
-
-		$window.scroll(function () {
-			is_scrolled = true;
-		});
-
-		setInterval(function () {
-			if (is_scrolled && !settings.disableAutoHide) {
-				onHasScrolled();
-				is_scrolled = false;
-			}
-		}, 250);
-
-		function onHasScrolled() {
-			var top = $window.scrollTop();
-
-			if (Math.abs(last_position - top) <= settings.delta)
-				return;
-
-			if (top > last_position && top > $nav.outerHeight()) {
-				_this.hide();
-			} else {
-				if (top + $window.height() < $document.height())
-					_this.show();
-			}
-
-			last_position = top;
+			this.init();
 		}
 
-		return $nav;
-	};
+		init(): void {
+			const _this = this;
+			const $nav = _this.element;
+			const settings = _this.settings;
+			let last_position = 0;
+			let is_scrolled = false;
 
-	BootstrapAutoHideNavbar.prototype.show = function () {
-		show.call(this);
-	};
+			$window.scroll(() => {
+				is_scrolled = true;
+			});
 
-	BootstrapAutoHideNavbar.prototype.hide = function () {
-		hide.call(this);
-	};
+			setInterval(() => {
+				if (is_scrolled && !settings.disableAutoHide) {
+					onHasScrolled();
+					is_scrolled = false;
+				}
+			}, 250);
 
-	BootstrapAutoHideNavbar.prototype.setDisableAutoHide = function (flag) {
-		this.settings.disableAutoHide = flag;
-	};
+			function onHasScrolled() {
+				var top = $window.scrollTop();
 
-	$.fn[plugin_name] = function (options) {
+				if (Math.abs(last_position - top) <= settings.delta)
+					return;
+
+				if (top > last_position && top > $nav.outerHeight()) {
+					_this.hide();
+				} else {
+					if (top + $window.height() < $document.height())
+						_this.show();
+				}
+
+				last_position = top;
+			}
+
+			return $nav;
+		}
+
+		show(): void {
+			show.call(this);
+		}
+
+		hide(): void {
+			hide.call(this);
+		}
+
+		setDisableAutoHide(flag: boolean): void {
+			this.settings.disableAutoHide = flag;
+		}
+	}
+
+	$.fn[plugin_name] = function (options: any) {
 		var instance;
 
 		this.each(function () {
 			instance = $.data(this, 'plugin_' + plugin_name);
 
-			if (instance === undefined) {
+			if (instance === undefined)
 				instance = $.data(this, 'plugin_' + plugin_name, new BootstrapAutoHideNavbar(this, options));
-			}
 		});
 
 		return instance;
