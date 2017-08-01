@@ -1,40 +1,37 @@
 # bootstrap-autohide-navbar
 A small jQuery plugin to show/hide twitter bootstrap 3 navbar on scroll.
 
-## Usage
-1. Install
+### Install using bower or npm
 
-#### bower
-```
+```bash
 $ bower install bootstrap-autohide-navbar
 ```
 
-#### npm
-```
+```bash
 $ npm install bootstrap-autohide-navbar
 ```
 
-2. Include jQuery and Bootstrap
+### Include jQuery and Bootstrap
 
-```html
+```markup
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.x.x/css/bootstrap.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.x.x/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.x.x/js/bootstrap.min.js"></script>
 ```
 
-3. Include bootstrap-autohide-navbar.js
+### Include bootstrap-autohide-navbar.js
 
 ```html
 <script src="dist/bootstrap-autohide-navbar.min.js"></script>
 ```
 
-4. Instantiate plugin
+### Usage
 
 ```javascript
 $(function () {
   'use strict';
 
-  $('.navbar').BootstrapAutoHideNavbar({
+  $('.navbar').bootstrapAutoHideNavbar({
     disableAutoHide: false,
     delta: 5,
     duration: 250,
@@ -49,7 +46,7 @@ $(function () {
 $(function () {
   'use strict';
 
-  var autohide = $('.navbar').BootstrapAutoHideNavbar({
+  var autohide = $('.navbar').bootstrapAutoHideNavbar({
     disableAutoHide: true
   });
 

@@ -26,11 +26,15 @@ gulp.task('build', () => {
     };
 
     return gulp.src('./src/**/*.ts')
+        .pipe(glp.sourcemaps.init())
         .pipe(glp.typescript({
-            noImplicitAny: true
+            noImplicitAny: true,
+            module: 'umd',
+            target: 'ES5'
         }))
         .pipe(glp.header(banner, { pkg: pkg }))
         .pipe(glp.minify(minify_opts))
+        .pipe(glp.sourcemaps.write('./'))
         .pipe(gulp.dest('./dist/'));
 });
 
